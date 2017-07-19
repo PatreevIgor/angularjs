@@ -1,19 +1,22 @@
 var app = angular.module('app',[]);
 
 app.controller('firstCtrl', function($scope, myFactory) {
-  console.log('firstCtrl');
-  $scope.myFactory = myFactory;
-  $scope.hello = 'hello world';
-});
+    $scope.hello = 'Hello world';
+    $scope.myFactory = myFactory;
 
-app.controller('secondCtrl', function($scope, myFactory) {
-  console.log('secondCtrl');
-  $scope.myFactory = myFactory;
-  $scope.hello = 'hello world';
+    $scope.getBookmark = function () {
+        return 'My bookmark';
+    };
+
+    $scope.setHello = function (text) {
+        $scope.hello = text;
+    };
 });
 
 app.factory('myFactory', function () {
-    return {
-        hello: 'hello world'
+  return {
+    hello: function () {
+      return 'hello world';
     }
-});
+  }
+})
